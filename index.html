@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Küçük Bir Anket 💗</title>
+
+<style>
+body{
+    margin:0;
+    height:100vh;
+    background:#fff0f5;
+    font-family: Arial, sans-serif;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+}
+
+.box{
+    background:white;
+    padding:25px;
+    border-radius:18px;
+    width:90%;
+    max-width:420px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.1);
+}
+
+h1{
+    color:#ff4f7b;
+}
+
+.question{
+    margin:20px 0;
+}
+
+button{
+    margin:8px;
+    padding:12px 22px;
+    font-size:18px;
+    border:none;
+    border-radius:12px;
+    cursor:pointer;
+    background:#ff4f7b;
+    color:white;
+}
+
+button.secondary{
+    background:#ff8fa3;
+}
+
+textarea{
+    width:100%;
+    height:90px;
+    border-radius:12px;
+    border:1px solid #ddd;
+    padding:10px;
+    font-size:16px;
+    resize:none;
+}
+
+#final{
+    display:none;
+    font-size:22px;
+    color:#ff2f6d;
+    line-height:1.4;
+}
+</style>
+</head>
+<body>
+
+<div class="box">
+
+    <h1>Mini Anket 💌</h1>
+
+    <div id="step1" class="question">
+        <p><strong>Beni seviyor musun?</strong></p>
+        <button onclick="nextStep()">Evet</button>
+        <button class="secondary" onclick="nextStep()">Çok</button>
+    </div>
+
+    <div id="step2" class="question" style="display:none;">
+        <p><strong>Beni özledin mi?</strong></p>
+        <button onclick="nextStep2()">Evet</button>
+        <button class="secondary" onclick="nextStep2()">Çok</button>
+    </div>
+
+    <div id="step3" class="question" style="display:none;">
+        <p><strong>İçinden gelenleri yaz 💗</strong></p>
+        <textarea id="feelings" placeholder="Buraya yazabilirsin..."></textarea><br><br>
+        <button onclick="finish()">Gönder</button>
+    </div>
+
+    <div id="final">
+        💕 Okuduğuma çok sevindim 💕<br><br>
+        Yazdıkların benim için çok değerliydi…(Not: bu kısmı bana atman lazım)<br><br>
+        <em id="userText"></em>
+    </div>
+
+</div>
+
+<script>
+function nextStep(){
+    document.getElementById("step1").style.display="none";
+    document.getElementById("step2").style.display="block";
+}
+
+function nextStep2(){
+    document.getElementById("step2").style.display="none";
+    document.getElementById("step3").style.display="block";
+}
+
+function finish(){
+    const text = document.getElementById("feelings").value;
+    document.getElementById("step3").style.display="none";
+    document.getElementById("final").style.display="block";
+    document.getElementById("userText").innerText = text || "💗";
+}
+</script>
+
+</body>
+</html>
